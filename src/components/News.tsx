@@ -1,26 +1,19 @@
 import {
   Newspaper,
-  Trophy,
-  HardHat,
-  Calendar,
   Clock,
   Quote,
-  TrendingUp,
   CheckCircle2,
   ExternalLink,
-  MapPin,
   ArrowRight,
   X,
-  Search,
   FileText,
-  Download,
   ShieldAlert,
   FileCheck,
-  Zap,
   Users,
   AlertCircle,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Calendar
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Section } from '../App';
@@ -32,13 +25,6 @@ interface NewsProps {
 export default function News({ setCurrentSection }: NewsProps) {
   const [activeHito, setActiveHito] = useState(0);
   const [isBlogOpen, setIsBlogOpen] = useState(false);
-
-  const stats = [
-    { label: 'Horas Hombre Sin Accidentes', value: '45.000+', icon: HardHat, color: 'text-amber-600', bg: 'bg-amber-50' },
-    { label: 'Proyectos Finalizados 2025', value: '150+', icon: CheckCircle2, color: 'text-emerald-600', bg: 'bg-emerald-50' },
-    { label: 'Eficiencia Operativa', value: '+28%', icon: TrendingUp, color: 'text-blue-600', bg: 'bg-blue-50' },
-    { label: 'Cumplimiento Normativo', value: '100%', icon: ShieldAlert, color: 'text-purple-600', bg: 'bg-purple-50' },
-  ];
 
   const resources = [
     { 
@@ -67,7 +53,7 @@ export default function News({ setCurrentSection }: NewsProps) {
       subtitle: 'Seguridad y salud laboral',
       url: 'https://www.bcn.cl/leychile/navegar?idNorma=28650',
       type: 'OFICIAL', 
-      icon: HardHat 
+      icon: ShieldAlert 
     },
     { 
       title: 'Código del Trabajo (Actualizado 2026)', 
@@ -110,76 +96,39 @@ export default function News({ setCurrentSection }: NewsProps) {
     }
   ];
 
-  const fieldWorkImages = [
-    {
-      url: 'https://www.metalockengineering.com/media/5ssckv4q/power-industry.jpg',
-      title: 'Mantenimiento de Turbinas',
-      location: 'Central Hidroeléctrica Angostura - Colbún',
-      details: ['Reparaciones mecánicas precisas', 'Alineación de ejes', 'Control de vibraciones']
-    },
-    {
-      url: 'https://www.enelgreenpower.com/content/dam/enel-egp/immagini/articoli/comunicati-stampa/Campos-Del-Sol-14.jpg',
-      title: 'Proyecto Solar Campos del Sol',
-      location: 'Región de Atacama - Enel Green Power',
-      details: ['Instalación paneles bifaciales', 'Generación limpia', 'Almacenamiento energía']
-    },
-    {
-      url: 'https://d2rinternational.com/wp-content/uploads/2024/03/13cover.jpg',
-      title: 'Montaje Spool y Tuberías HDPE',
-      location: 'Planta Industrial Biobío',
-      details: ['Fabricación y soldadura certificada', 'Pruebas de presión', 'Montaje estructural']
-    },
-    {
-      url: 'https://hcamineria.cl/wp-content/uploads/2024/05/uso-adecuado-de-epp.webp',
-      title: 'Seguridad en Faena',
-      location: 'Faena Industrial Norte Chile',
-      details: ['Uso correcto de EPP', 'Protección respiratoria', 'Cumplimiento normativo']
-    },
-    {
-      url: 'https://360enconcreto.com/wp-content/uploads/2022/06/seguridad-industrial-foto1-1024x768.jpeg',
-      title: 'Inspección y Mantenimiento',
-      location: 'Obra Hidroeléctrica Biobío',
-      details: ['Fiscalización diaria', 'Protocolos de altura', 'Trabajo seguro en equipo']
-    }
+  const projects = [
+    { id: 1, title: 'Mantenimiento Mayor Mecánico, Eléctrico e Instrumentación y Control', client: 'Central Hidroeléctrica Carena, Colbún', year: 2024, description: 'Servicio integral de mantenimiento mayor abarcando las áreas de mecánica, electricidad y sistemas de control.', image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800' },
+    { id: 2, title: 'Diseño, Cálculo, Fabricación y Montaje de Galpón Almacenaje', client: 'Central Hidroeléctrica Pangue, Enel', year: 2025, description: 'Proyecto de ingeniería estructural completo para el resguardo de componentes críticos.', image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800' },
+    { id: 3, title: 'Reparación de fuga DGT', client: 'Central Hidroeléctrica Lomas Altas, Enel', year: 2024, description: 'Intervención técnica de precisión para la corrección de fugas en sistemas DGT.', image: 'https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?w=800' },
+    { id: 4, title: 'Apoyo de Operación Puente Grúa', client: 'Central Hidroeléctrica Canutillar, Colbún', year: 2025, description: 'Maniobras críticas de izaje y movimiento de componentes pesados durante parada de planta.', image: 'https://images.pexels.com/photos/33995806/pexels-photo-33995806.jpeg' },
+    { id: 5, title: 'Diseño, Fabricación y Montaje de portón acceso Caverna', client: 'Central Hidroeléctrica Pangue, Enel', year: 2025, description: 'Fabricación de estructura metálica de alto tráfico para acceso principal.', image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?w=800' },
+    { id: 6, title: 'Instalación de señaléticas viales', client: 'BU-Centro, Enel', year: 2022, description: 'Normalización y actualización de señalética vial industrial para seguridad de tránsito.', image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800' },
+    { id: 7, title: 'Carga, traslado y descarga de componentes', client: 'Central Hidroeléctrica Pehuenche, Enel', year: 2022, description: 'Logística especializada para el movimiento de repuestos y activos críticos.', image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800' },
+    { id: 8, title: 'Mantenimiento y normalización de compuertas', client: 'Presa Melado, Enel', year: 2023, description: 'Servicios de mantenimiento mecánico en sistemas de regulación de caudal.', image: 'https://images.pexels.com/photos/30707838/pexels-photo-30707838.jpeg' },
+    { id: 9, title: 'Instalación de aislación térmica a termogeneradores', client: 'Central Térmica Teno', year: 2025, description: 'Mejora de eficiencia energética mediante instalación de aislación de alta temperatura.', image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800' },
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveHito((prev) => (prev + 1) % fieldWorkImages.length);
+      setActiveHito((prev) => (prev + 1) % projects.length);
     }, 7000);
     return () => clearInterval(interval);
-  }, []);
+  }, [projects.length]);
 
-  const nextHito = () => setActiveHito((prev) => (prev + 1) % fieldWorkImages.length);
-  const prevHito = () => setActiveHito((prev) => (prev - 1 + fieldWorkImages.length) % fieldWorkImages.length);
+  const nextHito = () => setActiveHito((prev) => (prev + 1) % projects.length);
+  const prevHito = () => setActiveHito((prev) => (prev - 1 + projects.length) % projects.length);
 
   return (
     <section id="noticias" className="py-24 bg-slate-50 min-h-screen pt-32 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* HEADER Y STATS */}
-        <div className="mb-20">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-            <div>
-              <span className="text-blue-600 font-bold tracking-[0.2em] uppercase text-sm mb-2 block">Actualidad & Recursos</span>
-              <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight">
-                Centro de <span className="text-blue-600">Noticias</span>
-              </h2>
-              <p className="text-slate-600 mt-4 max-w-2xl">Últimas actualizaciones normativas, artículos técnicos y hitos operativos. Actualizado enero 2026.</p>
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {stats.map((stat, i) => (
-              <div key={i} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-200/60 hover:shadow-2xl transition-all duration-300">
-                <div className={`${stat.bg} ${stat.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-6`}>
-                  <stat.icon size={32} />
-                </div>
-                <p className="text-5xl font-black text-slate-900 mb-1">{stat.value}</p>
-                <p className="text-sm text-slate-500 font-bold uppercase tracking-wider">{stat.label}</p>
-              </div>
-            ))}
-          </div>
+        {/* HEADER SIMPLE */}
+        <div className="mb-16">
+          <span className="text-blue-600 font-bold tracking-[0.2em] uppercase text-sm mb-2 block text-center md:text-left">Actualidad & Recursos</span>
+          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight text-center md:text-left">
+            Centro de <span className="text-blue-600">Noticias</span>
+          </h2>
+          <p className="text-slate-600 mt-4 max-w-2xl text-center md:text-left">Últimas actualizaciones normativas, artículos técnicos e hitos operativos. Actualizado enero 2026.</p>
         </div>
 
         {/* NOTICIA DESTACADA ACTUAL */}
@@ -211,8 +160,7 @@ export default function News({ setCurrentSection }: NewsProps) {
               <div>
                 <Quote className="text-amber-500 w-10 h-10 mb-4 opacity-70" />
                 <p className="text-xl text-white mb-6 italic">"La seguridad y el cumplimiento normativo son el fundamento de nuestra excelencia operativa."</p>
-                <p className="text-2xl font-bold text-white">Julián Gallegos Alarcón
-Gerente General GYC - 2026</p>
+                <p className="text-2xl font-bold text-white">Ivan Alex Castillo<br/><span className="text-lg font-medium text-blue-400">Gerente General GYC - 2026</span></p>
               </div>
             </div>
 
@@ -276,58 +224,54 @@ Gerente General GYC - 2026</p>
                   </a>
                 ))}
               </div>
-              <p className="mt-6 text-[10px] text-slate-400 italic text-center leading-tight">
-                * Fuente: Biblioteca del Congreso Nacional (BCN) - Actualizado enero 2026.
-              </p>
             </div>
 
-            {/* HITOS OPERATIVOS - CARRUSEL */}
+            {/* HITOS OPERATIVOS - CARRUSEL DE 9 PROYECTOS */}
             <div className="bg-slate-900 rounded-[2.5rem] overflow-hidden shadow-xl group">
-              <div className="relative aspect-video">
-                {fieldWorkImages.map((image, index) => (
+              <div className="relative aspect-square md:aspect-video">
+                {projects.map((project, index) => (
                   <img 
-                    key={index}
-                    src={image.url} 
+                    key={project.id}
+                    src={project.image} 
                     className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${activeHito === index ? 'opacity-100' : 'opacity-0'}`} 
-                    alt={image.title}
+                    alt={project.title}
                   />
                 ))}
                 
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent" />
                 
-                <div className="absolute bottom-0 left-0 p-8">
-                  <p className="text-amber-400 text-sm font-black uppercase tracking-widest mb-2">{fieldWorkImages[activeHito].location}</p>
-                  <p className="text-white text-2xl font-bold mb-4">{fieldWorkImages[activeHito].title}</p>
-                  <ul className="text-blue-200 text-sm space-y-1">
-                    {fieldWorkImages[activeHito].details.map((det, idx) => (
-                      <li key={idx} className="flex items-center gap-2"><CheckCircle2 size={14} /> {det}</li>
-                    ))}
-                  </ul>
+                <div className="absolute bottom-0 left-0 p-8 w-full">
+                  <p className="text-amber-400 text-sm font-black uppercase tracking-widest mb-2">
+                    {projects[activeHito].client} • {projects[activeHito].year}
+                  </p>
+                  <p className="text-white text-xl font-bold mb-3 leading-tight">
+                    {projects[activeHito].title}
+                  </p>
+                  <p className="text-blue-200 text-xs line-clamp-2 italic">
+                    {projects[activeHito].description}
+                  </p>
                 </div>
 
                 <button 
                   onClick={prevHito}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20"
-                  aria-label="Foto anterior"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20"
                 >
-                  <ChevronLeft size={24} className="text-white" />
+                  <ChevronLeft size={20} className="text-white" />
                 </button>
                 <button 
                   onClick={nextHito}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20"
-                  aria-label="Foto siguiente"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20"
                 >
-                  <ChevronRight size={24} className="text-white" />
+                  <ChevronRight size={20} className="text-white" />
                 </button>
               </div>
               
-              <div className="p-4 flex justify-center gap-3 bg-slate-800">
-                {fieldWorkImages.map((_, i) => (
+              <div className="p-4 flex justify-center gap-1.5 bg-slate-800 overflow-x-auto">
+                {projects.map((_, i) => (
                   <button 
                     key={i}
                     onClick={() => setActiveHito(i)} 
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${activeHito === i ? 'bg-white w-10' : 'bg-slate-500 hover:bg-slate-300'}`}
-                    aria-label={`Ir a foto ${i+1}`}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${activeHito === i ? 'bg-white w-6' : 'bg-slate-500 w-2'}`}
                   />
                 ))}
               </div>
@@ -351,12 +295,10 @@ Gerente General GYC - 2026</p>
               </button>
             </div>
             <div className="overflow-y-auto p-10 space-y-8">
-              {[...blogPosts, ...blogPosts].map((post, n) => (
+              {blogPosts.map((post, n) => (
                 <div key={n} className="flex gap-8 items-start pb-8 border-b border-slate-100 last:border-0 hover:translate-x-4 transition-transform cursor-pointer group">
                   <div className="bg-blue-50 text-blue-600 p-6 rounded-3xl font-black text-2xl group-hover:bg-blue-600 group-hover:text-white transition-colors min-w-[80px] text-center">
-                    {new Date(post.date.split(', ')[1].trim().split(' ').reverse().join('-')).getDate()}
-                    <br />
-                    {post.date.split(' ')[1]}
+                    {post.date.split(' ')[0]}
                   </div>
                   <div className="flex-1">
                     <span className="text-xs font-black bg-blue-100 text-blue-700 px-3 py-1 rounded-full uppercase">{post.category}</span>

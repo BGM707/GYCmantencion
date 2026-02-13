@@ -49,6 +49,13 @@ export default function Policies({ setCurrentSection }: PoliciesProps) {
 
   const corePolicies = [
     {
+      title: 'Seguridad, Salud, Medio Ambiente y Calidad',
+      icon: Shield,
+      color: 'bg-blue-700',
+      link: 'https://drive.google.com/file/d/1IX9gu3OiHmqjWjM4FHk6HsEa_nkMnYKe/view?usp=sharing',
+      content: 'Nuestra política integral que rige los estándares de seguridad operativa, salud ocupacional, cuidado del medio ambiente y gestión de calidad en todos nuestros procesos.'
+    },
+    {
       title: 'Acoso y Violencia',
       icon: Users,
       color: 'bg-red-600',
@@ -98,22 +105,9 @@ export default function Policies({ setCurrentSection }: PoliciesProps) {
 
         {/* --- Header --- */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-4 tracking-tighter uppercase">Cultura Organizacional</h2>
+          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-4 tracking-tighter uppercase">Politicas Organizacionales</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">Nuestro compromiso con la ética y transparencia respaldado por documentación oficial.</p>
           <div className="h-2 w-24 bg-blue-600 mx-auto mt-6 rounded-full"></div>
-        </div>
-
-        {/* --- Sección de Valores --- */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-24">
-          {values.map((v, i) => (
-            <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-all text-center group">
-              <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-600 transition-colors">
-                <v.icon className="w-6 h-6 text-blue-600 group-hover:text-white" />
-              </div>
-              <h4 className="font-bold text-gray-900 mb-2">{v.title}</h4>
-              <p className="text-xs text-gray-500 leading-relaxed">{v.desc}</p>
-            </div>
-          ))}
         </div>
 
         {/* --- Certificaciones ISO --- */}
